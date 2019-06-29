@@ -12,8 +12,16 @@ namespace Product_Rental.Controllers
         // GET: Movie
         public ActionResult Random()
         {
-            var movie = new Movie() { Name="Batman"};
+            var movie = new Movie() { Name = "Batman" };
             return View(movie);
         }
+
+        [Route("movie/released/{year:regex(\\d{4})}/{month:regex(\\d{2}):range(1,12)}")]
+
+        public ActionResult ByReleaseDate(int year, int month)
+        {
+            return Content(year +"/" + month);
+        }
+       
     }
 }
